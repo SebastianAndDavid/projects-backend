@@ -9,3 +9,37 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Projects {
+  id Int @id @default(autoincrement())
+  name String
+  address String
+  deposit String
+  createdAt DateTime @default(now())
+  homeowners Homeowners[]
+}
+
+model Homeowners {
+  id Int @id @default(autoincrement())
+  first_name String
+  last_name String
+  company String
+  email String
+  phone String
+  street String
+  apt String
+  city String
+  state String
+  zip_code String
+  createdAt DateTime @default(now())
+  projects Projects[]
+  }
+
+// model HomeownersOnProjects {
+//   id Int @id @default(autoincrement())
+//   homeowners Homeowners @relation(fields: [homeownersId], references: [id])
+//   homeownersId Int 
+//   projects Projects @relation(fields: [projectsId], references: [id])
+//   projectsId Int
+
+// }
