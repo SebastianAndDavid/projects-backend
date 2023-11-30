@@ -1,7 +1,11 @@
 import { Request, Response, Router } from 'express';
+import ProjectsService from '../services/ProjectsService';
 
 export default Router().post('/', async (req: Request, res: Response) => {
   try {
-    res.json();
-  } catch (error) {}
+    const data = await ProjectsService.createProject(req.body);
+    res.json(data);
+  } catch (error) {
+    console.error(error);
+  }
 });

@@ -4,32 +4,38 @@ import { Project, ProjectSelect } from './projects.interfaces';
 export default class ProjectsService {
   static async createProject({
     name,
+    apt,
     street,
     city,
     state,
     zip_code,
     deposit,
   }: Project): Promise<ProjectSelect> {
-    const newProject = await prisma.projects.create({
-      data: {
-        name,
-        street,
-        city,
-        state,
-        zip_code,
-        deposit,
-      },
-      //   select: {
-      //     id: true,
-      //     name: true,
-      //     street: true,
-      //     city: true,
-      //     state: true,
-      //     zip_code: true,
-      //     deposit: true,
-      //     createdAt: true,
-      //   },
-    });
-    return newProject;
+    if (apt) {
+      const newProject = await prisma.projects.create({
+        data: {
+          name,
+          apt,
+          street,
+          city,
+          state,
+          zip_code,
+          deposit,
+        },
+      });
+      return newProject;
+    } else {
+      const newProject = await prisma.projects.create({
+        data: {
+          name,
+          street,
+          city,
+          state,
+          zip_code,
+          deposit,
+        },
+      });
+      return newProject;
+    }
   }
 }
