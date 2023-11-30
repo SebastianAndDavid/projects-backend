@@ -15,8 +15,14 @@ const mockProject = {
 beforeEach(async () => {
   await truncate(['Projects'], prisma);
 });
-
+it.only('#POST connects to server', async () => {
+  const res = await request(app).post('/projects');
+  expect(res.status).toBe(200);
+});
 it('#POST should create a new Project', async () => {
   const res = await request(app).post('/projects').send(mockProject);
   expect(res.status).toBe(200);
+  expect(res.body).toEqual({
+    name: expect.any(String),
+  });
 });
