@@ -14,7 +14,7 @@ model Projects {
   id Int @id @default(autoincrement())
   name String
   street String
-  apt String
+  apt String?
   city String
   state String
   zip_code String

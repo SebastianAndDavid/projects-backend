@@ -4,13 +4,19 @@ import app from '../src/app';
 import { prisma } from '../src/utils/db.server';
 
 const mockProject = {
-    name: 'Smith Kitchen',
-    address: 
-
+  name: 'Smith Kitchen',
+  street: '123 SE New RD',
+  city: 'Springfield',
+  state: 'Alabama',
+  zip_code: '97123',
+  deposit: '$500',
 };
 
 beforeEach(async () => {
   await truncate(['Projects'], prisma);
 });
 
-it('#POST should create a new Project', async () => {});
+it('#POST should create a new Project', async () => {
+  const res = await request(app).post('/projects').send(mockProject);
+  expect(res.status).toBe(200);
+});
