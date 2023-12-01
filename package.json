@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npx jest test",
-    "dev": "nodemon src/app.ts"
+    "dev": "nodemon src/app.ts",
+    "singleTest": "jest --testNamePattern \"homeowners\""
   },
   "keywords": [],
   "author": "",
