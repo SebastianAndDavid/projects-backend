@@ -27,11 +27,11 @@ model Homeowners {
   id Int @id @default(autoincrement())
   first_name String
   last_name String
-  company String
+  company String?
   email String
   phone String
   street String
-  apt String
+  apt String?
   city String
   state String
   zip_code String
