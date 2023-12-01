@@ -4,6 +4,7 @@ import cors from 'cors';
 import * as dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import projectsController from './controllers/projectsController';
+import homeownersController from './controllers/homeownersController';
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 app.use('/projects', projectsController);
+app.use('/homeowners', homeownersController);
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
