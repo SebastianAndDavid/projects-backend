@@ -1,7 +1,7 @@
-import { truncate } from '../test-utils/truncate';
+// import { truncate } from '../test-utils/truncate';
 import request from 'supertest';
 import app from '../src/app';
-import { prisma } from '../src/utils/db.server';
+// import { prisma } from '../src/utils/db.server';
 
 const mockHomeowner = {
   first_name: 'Gina',
@@ -15,9 +15,9 @@ const mockHomeowner = {
   zip_code: '46372',
 };
 
-beforeEach(async () => {
-  await truncate(['Homeowners'], prisma);
-});
+// beforeEach(async () => {
+//   await truncate(['Homeowners'], prisma);
+// });
 
 it.skip('#POST connects to server', async () => {
   const res = await request(app).post('/homeowners');

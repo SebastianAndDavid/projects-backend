@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npx jest test",
     "dev": "nodemon src/app.ts",
-    "singleTest": "jest --testNamePattern \"homeowners\""
+    "test:homeowners": "npm test -- --testMatch='**/homeowners.test.ts'"
   },
   "keywords": [],
   "author": "",
