@@ -38,4 +38,32 @@ export default class ProjectsService {
       return newProject;
     }
   }
+
+  // static async createProjectWithHomeowner({
+  //   name,
+  //   apt,
+  //   street,
+  //   city,
+  //   state,
+  //   zip_code,
+  //   deposit,
+  // }: Project): Promise<ProjectSelect> {
+  //   const newProjectWithHomeOwner = await prisma.projects.create({
+  //     data: {
+  //       name,
+  //       apt,
+  //       street,
+  //       city,
+  //       state,
+  //       zip_code,
+  //       deposit,
+  //       homeowners: {
+  //         connect: {
+  //           id: 1,
+  //         },
+  //       },
+  //     },
+  //   });
+  //   return newProjectWithHomeOwner;
+  // }
 }
