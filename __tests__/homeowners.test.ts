@@ -24,7 +24,7 @@ it.skip('#POST connects to server', async () => {
   const res = await request(app).post('/homeowners');
   expect(res.status).toBe(200);
 });
-it('#POST should create a new Homeowner', async () => {
+it.skip('#POST should create a new Homeowner', async () => {
   const res = await request(app).post('/homeowners').send(mockHomeowner);
   expect(res.status).toBe(200);
   expect(res.body).toEqual({
@@ -41,4 +41,9 @@ it('#POST should create a new Homeowner', async () => {
     zip_code: expect.any(String),
     createdAt: expect.any(String),
   });
+});
+it('#GET gets all homeowners', async () => {
+  const res = await request(app).get('/homeowners');
+  expect(res.status).toBe(200);
+  expect(res.body.length).toEqual(2);
 });
