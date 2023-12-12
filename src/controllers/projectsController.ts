@@ -17,4 +17,13 @@ export default Router()
     } catch (error) {
       console.error(error);
     }
+  })
+  .get('/:id', async (req: Request, res: Response) => {
+    try {
+      const { id } = req.params;
+      const data = await ProjectsService.getProjectById(id);
+      res.json(data);
+    } catch (error) {
+      console.error(error);
+    }
   });

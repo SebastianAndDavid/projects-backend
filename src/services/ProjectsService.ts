@@ -71,4 +71,13 @@ export default class ProjectsService {
     const projects = await prisma.projects.findMany();
     return projects;
   }
+
+  static async getProjectById(id: string): Promise<ProjectSelect | null> {
+    const project = await prisma.projects.findUnique({
+      where: {
+        id: Number(id),
+      },
+    });
+    return project;
+  }
 }

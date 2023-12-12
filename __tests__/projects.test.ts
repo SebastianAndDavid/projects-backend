@@ -21,8 +21,9 @@ const mockProjectWithOwner = {
   deposit: '$500',
 };
 const mockProjectWithApt = {
+  id: 8,
   name: 'Smith Kitchen',
-  apt: '4',
+  apt: '45',
   street: '123 SE New RD',
   city: 'Springfield',
   state: 'Alabama',
@@ -90,7 +91,9 @@ it.skip('#GET gets all projects', async () => {
 });
 it('#GET gets an existing project by id', async () => {
   const res = await request(app).get('/projects/8');
-  console.log('res.body', res.body);
   expect(res.status).toBe(200);
-  expect(res.body).toEqual(mockProjectWithApt);
+  expect(res.body).toEqual({
+    ...mockProjectWithApt,
+    createdAt: expect.any(String),
+  });
 });
