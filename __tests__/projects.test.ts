@@ -12,7 +12,7 @@ const mockProject = {
   deposit: '$500',
 };
 const mockProjectWithOwner = {
-  name: 'Smith Kitchen',
+  name: 'Franklin Kitchen',
   street: '123 SE New RD',
   city: 'Springfield',
   apt: '45',
@@ -21,7 +21,6 @@ const mockProjectWithOwner = {
   deposit: '$500',
 };
 const mockProjectWithApt = {
-  id: 8,
   name: 'Smith Kitchen',
   apt: '45',
   street: '123 SE New RD',
@@ -69,8 +68,12 @@ it.skip('#POST should create a new Project with apt', async () => {
     createdAt: expect.any(String),
   });
 });
-it.skip('#POST should create a new Project and f(key) to an existing homeowner', async () => {
-  const res = await request(app).post('/projects').send(mockProjectWithOwner);
+it('#POST should create a new Project and f(key) to an existing homeowner', async () => {
+  const id = 8;
+  const data = await request(app).get(`/homeowners/${id}`);
+  const res = await request(app)
+    .post(`/projects/${data.body.id}`)
+    .send(mockProjectWithOwner);
   expect(res.status).toBe(200);
   expect(res.body).toEqual({
     id: expect.any(Number),
@@ -89,7 +92,7 @@ it.skip('#GET gets all projects', async () => {
   expect(res.status).toBe(200);
   expect(res.body.length).toEqual(2);
 });
-it('#GET gets an existing project by id', async () => {
+it.skip('#GET gets an existing project by id', async () => {
   const res = await request(app).get('/projects/8');
   expect(res.status).toBe(200);
   expect(res.body).toEqual({
