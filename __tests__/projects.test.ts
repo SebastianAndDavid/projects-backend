@@ -83,13 +83,14 @@ it.skip('#POST should create a new Project and f(key) to an existing homeowner',
     createdAt: expect.any(String),
   });
 });
-it('#GET gets all projects', async () => {
+it.skip('#GET gets all projects', async () => {
   const res = await request(app).get('/projects/all');
-  console.log('res.body', res.body);
   expect(res.status).toBe(200);
+  expect(res.body.length).toEqual(2);
 });
-it.skip('#GET gets an existing project and it/s f(keyed) homeowner(s)', async () => {
-  const res = await request(app).get('/projects');
+it('#GET gets an existing project by id', async () => {
+  const res = await request(app).get('/projects/8');
   console.log('res.body', res.body);
   expect(res.status).toBe(200);
+  expect(res.body).toEqual(mockProjectWithApt);
 });
