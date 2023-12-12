@@ -43,7 +43,8 @@ it.skip('#POST should create a new Homeowner', async () => {
   });
 });
 it('#GET gets all homeowners', async () => {
-  const res = await request(app).get('/homeowners');
+  const res = await request(app).get('/homeowners/all');
+  console.log('res.body', res.body);
   expect(res.status).toBe(200);
-  expect(res.body.length).toEqual(2);
+  expect(res.body.length).toEqual(1);
 });

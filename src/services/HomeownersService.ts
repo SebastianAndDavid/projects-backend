@@ -23,4 +23,9 @@ export default class HomeownersService {
 
     return newHomeowner;
   }
+
+  static async getHomeowners(): Promise<HomeownerSelect[]> {
+    const homeowners = await prisma.homeowners.findMany();
+    return homeowners;
+  }
 }
