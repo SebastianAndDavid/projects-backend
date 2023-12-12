@@ -75,4 +75,20 @@ export default class ProjectsService {
     });
     return project;
   }
+
+  static async getProjectWithHomeowner(
+    id: string,
+  ): Promise<ProjectSelect[] | ProjectSelect | null> {
+    const projectWithOwner = await prisma.projects.findMany({
+      where: {
+        homeowners: {
+          //some - filter within nested queries, checkes whether at least one element in a list (homeowners array) meets the condition (has a matching id)
+          some: {
+            id: Number(id),
+          },
+        },
+      },
+    });
+    return projectWithOwner;
+  }
 }

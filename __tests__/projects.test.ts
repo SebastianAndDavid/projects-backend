@@ -103,7 +103,7 @@ it.skip('#GET gets an existing project by id', async () => {
 it('#GET existing project(s) and f(key) homeowner(s)', async () => {
   const id = 8;
   const data = await request(app).get(`/homeowners/${id}`);
-  const res = await request(app).get(`/projects/${data.body.id}`);
+  const res = await request(app).get(`/projects/homeowners/${data.body.id}`);
   console.log('res.body', res.body);
   expect(res.status).toBe(200);
   expect(res.body.length).toEqual(8);
