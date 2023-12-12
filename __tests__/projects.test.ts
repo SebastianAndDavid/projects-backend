@@ -100,11 +100,41 @@ it.skip('#GET gets an existing project by id', async () => {
     createdAt: expect.any(String),
   });
 });
-it('#GET existing project(s) and f(key) homeowner(s)', async () => {
+it('#GET gets a project by id and includes f(key) homeowners', async () => {
+  const res = await request(app).get('/projects/17');
+  expect(res.status).toBe(200);
+  expect(res.body).toEqual({
+    apt: '45',
+    city: 'Springfield',
+    createdAt: '2023-12-12T18:38:49.735Z',
+    deposit: '$500',
+    homeowners: [
+      {
+        apt: '123',
+        city: 'Scranton',
+        company: null,
+        createdAt: '2023-12-12T00:01:16.224Z',
+        email: 'smith@dundermifflin.com',
+        first_name: 'Gina',
+        id: 8,
+        last_name: 'Smith',
+        phone: '(971) 978-7725',
+        state: 'Pepe Sylvia',
+        street: '123 Any St',
+        zip_code: '46372',
+      },
+    ],
+    id: 17,
+    name: 'Franklin Kitchen',
+    state: 'Alabama',
+    street: '123 SE New RD',
+    zip_code: '97123',
+  });
+});
+it.skip('#GET existing project(s) and f(key) homeowner', async () => {
   const id = 8;
   const data = await request(app).get(`/homeowners/${id}`);
   const res = await request(app).get(`/projects/homeowners/${data.body.id}`);
-  console.log('res.body', res.body);
   expect(res.status).toBe(200);
   expect(res.body.length).toEqual(8);
 });

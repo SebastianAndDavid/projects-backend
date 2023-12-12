@@ -1,5 +1,9 @@
 import { prisma } from '../utils/db.server';
-import { Project, ProjectSelect } from './projects.interfaces';
+import {
+  Project,
+  ProjectSelect,
+  ProjectWithHomeowners,
+} from './projects.interfaces';
 
 export default class ProjectsService {
   static async createProject({
@@ -90,5 +94,19 @@ export default class ProjectsService {
       },
     });
     return projectWithOwner;
+  }
+
+  static async getProjectByIdWithHomeowner(
+    id: string,
+  ): Promise<ProjectWithHomeowners | null> {
+    const project = await prisma.projects.findUnique({
+      where: {
+        id: Number(id),
+      },
+      include: {
+        homeowners: true,
+      },
+    });
+    return project;
   }
 }

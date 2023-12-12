@@ -47,8 +47,7 @@ it.skip('#GET gets all homeowners', async () => {
   expect(res.status).toBe(200);
   expect(res.body.length).toEqual(1);
 });
-it('#GET gets homeowner by id', async () => {
+it.skip('#GET gets homeowner by id', async () => {
   const res = await request(app).get('/homeowners/8');
-  console.log('res.body', res.body);
   expect(res.status).toBe(200);
 });

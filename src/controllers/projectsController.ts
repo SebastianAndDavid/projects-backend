@@ -25,7 +25,7 @@ export default Router()
   .get('/:id', async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
-      const data = await ProjectsService.getProjectById(id);
+      const data = await ProjectsService.getProjectByIdWithHomeowner(id);
       res.json(data);
     } catch (error) {
       console.error(error);
