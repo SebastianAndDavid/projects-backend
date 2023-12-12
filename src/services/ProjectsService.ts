@@ -41,7 +41,7 @@ export default class ProjectsService {
 
   static async createProjectWithHomeowner(
     { name, apt, street, city, state, zip_code, deposit }: Project,
-    homeownerId: string,
+    id: string,
   ): Promise<ProjectSelect> {
     const newProjectWithHomeOwner = await prisma.projects.create({
       data: {
@@ -54,7 +54,7 @@ export default class ProjectsService {
         deposit,
         homeowners: {
           connect: {
-            id: Number(homeownerId),
+            id: Number(id),
           },
         },
       },

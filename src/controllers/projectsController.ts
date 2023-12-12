@@ -2,12 +2,12 @@ import { Request, Response, Router } from 'express';
 import ProjectsService from '../services/ProjectsService';
 
 export default Router()
-  .post('/:homeownerId', async (req: Request, res: Response) => {
+  .post('/:id', async (req: Request, res: Response) => {
     try {
-      const { homeownerId } = req.params;
+      const { id } = req.params;
       const data = await ProjectsService.createProjectWithHomeowner(
         req.body,
-        homeownerId,
+        id,
       );
       res.json(data);
     } catch (error) {
