@@ -28,4 +28,13 @@ export default class HomeownersService {
     const homeowners = await prisma.homeowners.findMany();
     return homeowners;
   }
+
+  static async getHomeownerById(id: string): Promise<HomeownerSelect | null> {
+    const homeowner = await prisma.homeowners.findUnique({
+      where: {
+        id: Number(id),
+      },
+    });
+    return homeowner;
+  }
 }

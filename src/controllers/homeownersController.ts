@@ -15,4 +15,11 @@ export default Router()
       const data = await HomeownersService.getHomeowners();
       res.json(data);
     } catch (error) {}
+  })
+  .get('/:id', async (req: Request, res: Response) => {
+    try {
+      const { id } = req.params;
+      const data = await HomeownersService.getHomeownerById(id);
+      res.json(data);
+    } catch (error) {}
   });
