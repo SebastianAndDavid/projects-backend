@@ -84,7 +84,7 @@ it.skip('#POST should create a new Project and f(key) to an existing homeowner',
   });
 });
 it('#GET gets all projects', async () => {
-  const res = await request(app).get('/projects');
+  const res = await request(app).get('/projects/all');
   console.log('res.body', res.body);
   expect(res.status).toBe(200);
 });

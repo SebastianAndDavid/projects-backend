@@ -66,4 +66,9 @@ export default class ProjectsService {
     });
     return newProjectWithHomeOwner;
   }
+
+  static async getAllProjects(): Promise<ProjectSelect[]> {
+    const projects = await prisma.projects.findMany();
+    return projects;
+  }
 }
