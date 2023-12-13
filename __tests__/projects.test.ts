@@ -143,6 +143,5 @@ it('#PUT updates the name of an existing project, by project id', async () => {
   const res = await request(app)
     .put(`/projects/${data.body.id}`)
     .send({ ...mockProjectWithApt, name: 'Smith Bathroom' });
-  console.log('res.body', res.body);
   expect(res.status).toBe(200);
 });

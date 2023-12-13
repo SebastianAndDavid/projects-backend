@@ -109,4 +109,17 @@ export default class ProjectsService {
     });
     return project;
   }
+
+  static async updateProjectById(
+    id: string,
+    project: Project,
+  ): Promise<ProjectSelect> {
+    const updatedProject = await prisma.projects.update({
+      where: {
+        id: Number(id),
+      },
+      data: { name: project.name },
+    });
+    return updatedProject;
+  }
 }
