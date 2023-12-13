@@ -118,7 +118,7 @@ export default class ProjectsService {
       where: {
         id: Number(id),
       },
-      data: { name: project.name },
+      data: project,
     });
     return updatedProject;
   }

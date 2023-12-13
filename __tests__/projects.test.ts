@@ -138,10 +138,16 @@ it.skip('#GET all existing project(s) and f(key) homeowner', async () => {
   expect(res.status).toBe(200);
   expect(res.body.length).toEqual(8);
 });
-it('#PUT updates the name of an existing project, by project id', async () => {
+it('#PUT updates an existing project, by project id', async () => {
   const data = await request(app).get('/projects/9');
   const res = await request(app)
     .put(`/projects/${data.body.id}`)
-    .send({ ...mockProjectWithApt, name: 'Smith Bathroom' });
+    .send({
+      ...mockProjectWithApt,
+      name: 'Smith Courtyard',
+      apt: '3335',
+      deposit: '$1,000',
+    });
+  console.log('res.body', res.body);
   expect(res.status).toBe(200);
 });
