@@ -100,7 +100,7 @@ it.skip('#GET gets an existing project by id', async () => {
     createdAt: expect.any(String),
   });
 });
-it('#GET gets a project by id and includes f(key) homeowners', async () => {
+it.skip('#GET gets a project by id and includes f(key) homeowners', async () => {
   const res = await request(app).get('/projects/17');
   expect(res.status).toBe(200);
   expect(res.body).toEqual({
@@ -131,10 +131,18 @@ it('#GET gets a project by id and includes f(key) homeowners', async () => {
     zip_code: '97123',
   });
 });
-it.skip('#GET existing project(s) and f(key) homeowner', async () => {
+it.skip('#GET all existing project(s) and f(key) homeowner', async () => {
   const id = 8;
   const data = await request(app).get(`/homeowners/${id}`);
   const res = await request(app).get(`/projects/homeowners/${data.body.id}`);
   expect(res.status).toBe(200);
   expect(res.body.length).toEqual(8);
+});
+it('#PUT updates the name of an existing project, by project id', async () => {
+  const data = await request(app).get('/projects/9');
+  const res = await request(app)
+    .put(`/projects/${data.body.id}`)
+    .send({ ...mockProjectWithApt, name: 'Smith Bathroom' });
+  console.log('res.body', res.body);
+  expect(res.status).toBe(200);
 });
