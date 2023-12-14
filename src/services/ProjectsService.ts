@@ -122,4 +122,13 @@ export default class ProjectsService {
     });
     return updatedProject;
   }
+
+  static async deleteProjectById(id: string): Promise<Project> {
+    const data = await prisma.projects.delete({
+      where: {
+        id: Number(id),
+      },
+    });
+    return data;
+  }
 }

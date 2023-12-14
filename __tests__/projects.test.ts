@@ -151,8 +151,8 @@ it.skip('#PUT updates an existing project, by project id', async () => {
   expect(res.status).toBe(200);
 });
 it('#DELETE deletes a single project by id', async () => {
-  const res = await request(app).delete('/projects/8');
-  expect(res.status).toBe(404);
-  expect(res.body).toEqual({});
-  expect(res.body).toEqual(mockProjectWithApt);
+  const res = await request(app).delete('/projects/14');
+  expect(res.status).toBe(200);
+  const data = await request(app).get('/projects/14');
+  expect(data.body.error).toEqual('Project not found');
 });
