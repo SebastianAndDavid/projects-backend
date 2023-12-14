@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "prisma": {
-    "seed": "node --require esbuild-register prisma/seed.ts"
-  },
   "scripts": {
     "test": "npx jest test",
-    "dev": "nodemon src/app.ts"
+    "dev": "nodemon src/app.ts",
+    "test:homeowners": "npm test -- --testMatch='**/homeowners.test.ts'",
+    "test:projects": "npm test -- --testMatch='**/projects.test.ts'"
   },
   "keywords": [],
   "author": "",
