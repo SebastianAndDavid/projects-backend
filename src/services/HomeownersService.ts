@@ -38,7 +38,7 @@ export default class HomeownersService {
     return homeowner;
   }
 
-  static async updateHomeowner(
+  static async updateHomeownerById(
     id: string,
     homeowner: Homeowner,
   ): Promise<HomeownerSelect> {

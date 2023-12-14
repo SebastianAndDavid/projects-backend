@@ -52,15 +52,21 @@ it.skip('#GET gets homeowner by id', async () => {
   expect(res.status).toBe(200);
 });
 it('#PUT updates homeowner name', async () => {
+  const data = await request(app).get('/homeowners/8');
   const res = await request(app)
-    .put('/homeowners/8')
-    .send({ ...mockHomeowner, first_name: 'Gayle' });
+    .put(`/homeowners/${data.body.id}`)
+    .send({
+      ...mockHomeowner,
+      first_name: 'Gayle',
+      last_name: 'Johnson',
+      company: 'ABC Inc',
+    });
   expect(res.status).toBe(200);
   expect(res.body).toEqual({
     id: expect.any(Number),
     first_name: 'Gayle',
-    last_name: expect.any(String),
-    company: null,
+    last_name: 'Johnson',
+    company: 'ABC Inc',
     email: expect.any(String),
     phone: expect.any(String),
     apt: expect.any(String),

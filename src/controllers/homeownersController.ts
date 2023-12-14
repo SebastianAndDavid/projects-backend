@@ -30,7 +30,14 @@ export default Router()
   .put('/:id', async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
-      const data = await HomeownersService.updateHomeowner(id, req.body);
+
+      if (!id)
+        return res.status(400).json({ error: 'Homeowner ID is required' });
+
+      const data = await HomeownersService.updateHomeownerById(id, req.body);
+
+      if (!data) return res.status(404).json({ error: 'Homeowner not found' });
+
       res.json(data);
     } catch (error) {
       console.error(error);
