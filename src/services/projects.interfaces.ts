@@ -2,6 +2,7 @@ import { HomeownerSelect } from './homeowners.interface';
 
 export interface Project {
   name: string;
+  description: string | undefined | null;
   street: string;
   apt: string | undefined | null;
   city: string;

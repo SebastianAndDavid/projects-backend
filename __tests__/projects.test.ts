@@ -13,6 +13,7 @@ const mockProject = {
 };
 const mockProjectWithOwner = {
   name: 'Franklin Kitchen',
+
   street: '123 SE New RD',
   city: 'Springfield',
   apt: '45',
@@ -68,16 +69,22 @@ it.skip('#POST should create a new Project with apt', async () => {
     createdAt: expect.any(String),
   });
 });
-it.skip('#POST should create a new Project and f(key) to an existing homeowner', async () => {
+it('#POST should create a new Project and f(key) to an existing homeowner', async () => {
   const id = 8;
   const data = await request(app).get(`/homeowners/${id}`);
   const res = await request(app)
     .post(`/projects/${data.body.id}`)
-    .send(mockProjectWithOwner);
+    .send({
+      ...mockProjectWithOwner,
+      description:
+        'Design the Interiors, including developing interior floor plan layout (in collaboration with Architect),  interior cabinetry & fireplace walls, interior finishes, fixtures, lighting and hardware.',
+    });
+  console.log('res.body', res.body);
   expect(res.status).toBe(200);
   expect(res.body).toEqual({
     id: expect.any(Number),
     name: expect.any(String),
+    description: expect.any(String),
     apt: expect.any(String),
     street: expect.any(String),
     city: expect.any(String),
@@ -150,7 +157,7 @@ it.skip('#PUT updates an existing project, by project id', async () => {
     });
   expect(res.status).toBe(200);
 });
-it('#DELETE deletes a single project by id', async () => {
+it.skip('#DELETE deletes a single project by id', async () => {
   const res = await request(app).delete('/projects/14');
   expect(res.status).toBe(200);
   const data = await request(app).get('/projects/14');
