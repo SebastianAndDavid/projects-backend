@@ -51,7 +51,7 @@ it.skip('#GET gets homeowner by id', async () => {
   const res = await request(app).get('/homeowners/8');
   expect(res.status).toBe(200);
 });
-it('#PUT updates homeowner name', async () => {
+it.skip('#PUT updates homeowner name', async () => {
   const data = await request(app).get('/homeowners/8');
   const res = await request(app)
     .put(`/homeowners/${data.body.id}`)

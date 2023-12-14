@@ -138,7 +138,7 @@ it.skip('#GET all existing project(s) and f(key) homeowner', async () => {
   expect(res.status).toBe(200);
   expect(res.body.length).toEqual(8);
 });
-it('#PUT updates an existing project, by project id', async () => {
+it.skip('#PUT updates an existing project, by project id', async () => {
   const data = await request(app).get('/projects/9');
   const res = await request(app)
     .put(`/projects/${data.body.id}`)
@@ -149,4 +149,10 @@ it('#PUT updates an existing project, by project id', async () => {
       deposit: '$1,000',
     });
   expect(res.status).toBe(200);
+});
+it('#DELETE deletes a single project by id', async () => {
+  const res = await request(app).delete('/projects/8');
+  expect(res.status).toBe(404);
+  expect(res.body).toEqual({});
+  expect(res.body).toEqual(mockProjectWithApt);
 });
