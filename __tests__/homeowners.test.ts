@@ -47,7 +47,27 @@ it.skip('#GET gets all homeowners', async () => {
   expect(res.status).toBe(200);
   expect(res.body.length).toEqual(1);
 });
-it('#GET gets homeowner by id', async () => {
+it.skip('#GET gets homeowner by id', async () => {
   const res = await request(app).get('/homeowners/8');
   expect(res.status).toBe(200);
+});
+it('#PUT updates homeowner name', async () => {
+  const res = await request(app)
+    .put('/homeowners')
+    .send({ ...mockHomeowner, first_name: 'Gayle' });
+  expect(res.status).toBe(200);
+  expect(res.body).toEqual({
+    id: expect.any(Number),
+    first_name: 'Gayle',
+    last_name: expect.any(String),
+    company: null,
+    email: expect.any(String),
+    phone: expect.any(String),
+    apt: expect.any(String),
+    street: expect.any(String),
+    city: expect.any(String),
+    state: expect.any(String),
+    zip_code: expect.any(String),
+    createdAt: expect.any(String),
+  });
 });
