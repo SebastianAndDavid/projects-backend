@@ -53,7 +53,7 @@ it.skip('#GET gets homeowner by id', async () => {
 });
 it('#PUT updates homeowner name', async () => {
   const res = await request(app)
-    .put('/homeowners')
+    .put('/homeowners/8')
     .send({ ...mockHomeowner, first_name: 'Gayle' });
   expect(res.status).toBe(200);
   expect(res.body).toEqual({

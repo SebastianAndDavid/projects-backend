@@ -26,4 +26,13 @@ export default Router()
     } catch (error) {
       console.error(error);
     }
+  })
+  .put('/:id', async (req: Request, res: Response) => {
+    try {
+      const { id } = req.params;
+      const data = await HomeownersService.updateHomeowner(id, req.body);
+      res.json(data);
+    } catch (error) {
+      console.error(error);
+    }
   });

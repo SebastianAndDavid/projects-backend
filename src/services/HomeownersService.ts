@@ -37,4 +37,17 @@ export default class HomeownersService {
     });
     return homeowner;
   }
+
+  static async updateHomeowner(
+    id: string,
+    homeowner: Homeowner,
+  ): Promise<HomeownerSelect> {
+    const updatedHomeowner = await prisma.homeowners.update({
+      where: {
+        id: Number(id),
+      },
+      data: homeowner,
+    });
+    return updatedHomeowner;
+  }
 }
