@@ -148,6 +148,5 @@ it('#PUT updates an existing project, by project id', async () => {
       apt: '3335',
       deposit: '$1,000',
     });
-  console.log('res.body', res.body);
   expect(res.status).toBe(200);
 });
