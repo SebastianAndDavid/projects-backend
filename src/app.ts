@@ -28,6 +28,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/projects', projectsController);
 app.use('/homeowners', homeownersController);
+app.use('/homeownerstoprojects');
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
