@@ -1,6 +1,7 @@
 import { prisma } from '../utils/db.server';
 import {
   Project,
+  ProjectReq,
   ProjectSelect,
   ProjectWithHomeowners,
 } from './projects.interfaces';
@@ -132,4 +133,41 @@ export default class ProjectsService {
     });
     return data;
   }
+
+  // static async createProjectWithManyHomeowners(
+  //   id: Array<string>,
+  //   project: Project,
+  // ): Promise<ProjectSelect> {
+  //   const data = await prisma.projects.create({
+  //     data: project,
+  //     homeowners: {
+  //       connect: id.map((id) => ({ id })),
+  //     },
+  //   });
+  //   return data;
+  // }
+
+  static async createProjectWithManyHomeowners(
+    req: ProjectReq,
+  ): Promise<ProjectWithHomeowners> {
+    const project = req.mockProjectWithApt;
+    console.log('project', project);
+    const id = req.homeownerIds;
+    console.log('id', id);
+    const data = await prisma.projects.create({
+      data: {
+        ...project,
+        homeowners: {
+          connect: id.map((id) => ({ id })),
+        },
+      },
+      include: {
+        homeowners: true,
+      },
+    });
+    return data;
+  }
 }
+// connect: {
+//   id: Number(id),
+// },

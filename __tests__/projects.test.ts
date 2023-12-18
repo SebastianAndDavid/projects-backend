@@ -163,6 +163,9 @@ it.skip('#DELETE deletes a single project by id', async () => {
   expect(data.body.error).toEqual('Project not found');
 });
 it('#POST creates a project with multiple homeowners', async () => {
-  const res = await request(app).post('/projects/many/["33", "34"]');
+  const res = await request(app)
+    .post('/projects')
+    .send({ mockProjectWithApt, homeownerIds: [33, 32] });
+  console.log('res.body', res.body);
   expect(res.status).toBe(200);
 });

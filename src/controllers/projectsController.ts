@@ -2,19 +2,11 @@ import { Request, Response, Router } from 'express';
 import ProjectsService from '../services/ProjectsService';
 
 export default Router()
-  .post('/:id', async (req: Request, res: Response) => {
+  .post('/', async (req: Request, res: Response) => {
     try {
-      const { id } = req.params;
-
-      if (!id) return res.status(400).json({ error: 'Project ID is required' });
-
-      const data = await ProjectsService.createProjectWithHomeowner(
+      const data = await ProjectsService.createProjectWithManyHomeowners(
         req.body,
-        id,
       );
-
-      if (!data) return res.status(404).json({ error: 'Project not found' });
-
       res.json(data);
     } catch (error) {
       console.error(error);
