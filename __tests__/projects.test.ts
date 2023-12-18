@@ -162,3 +162,7 @@ it.skip('#DELETE deletes a single project by id', async () => {
   const data = await request(app).get('/projects/14');
   expect(data.body.error).toEqual('Project not found');
 });
+it('#POST creates a project with multiple homeowners', async () => {
+  const res = await request(app).post('/projects/many/["33", "34"]');
+  expect(res.status).toBe(200);
+});
