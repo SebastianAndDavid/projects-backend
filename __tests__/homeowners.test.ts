@@ -6,7 +6,6 @@ import app from '../src/app';
 const mockHomeowner = {
   first_name: 'Gina',
   last_name: 'Smith',
-  // company: 'Dunder-Mifflin',
   email: 'smith@dundermifflin.com',
   apt: '123',
   phone: '(971) 978-7725',

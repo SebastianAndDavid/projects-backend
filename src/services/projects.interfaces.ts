@@ -28,3 +28,16 @@ export interface ProjectWithHomeowners {
   createdAt: Date;
   homeowners: HomeownerSelect[];
 }
+
+export interface ProjectReq {
+  name: string;
+  description: string | undefined | null;
+  street: string;
+  apt: string | undefined | null;
+  city: string;
+  state: string;
+  zip_code: string;
+  deposit: string;
+  project: Project;
+  homeownerId: Array<number>;
+}
