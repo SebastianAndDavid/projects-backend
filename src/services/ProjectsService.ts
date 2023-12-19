@@ -150,15 +150,16 @@ export default class ProjectsService {
   static async createProjectWithManyHomeowners(
     req: ProjectReq,
   ): Promise<ProjectWithHomeowners> {
-    const project = req.mockProjectWithApt;
+    console.log('req', req);
+    const project = req.project;
     console.log('project', project);
-    const id = req.homeownerIds;
+    const id = req.homeownerId;
     console.log('id', id);
     const data = await prisma.projects.create({
       data: {
         ...project,
         homeowners: {
-          connect: id.map((id) => ({ id })),
+          connect: id.map((id) => ({ id: Number(id) })),
         },
       },
       include: {
@@ -168,6 +169,3 @@ export default class ProjectsService {
     return data;
   }
 }
-// connect: {
-//   id: Number(id),
-// },

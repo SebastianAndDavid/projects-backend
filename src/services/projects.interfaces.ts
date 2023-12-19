@@ -38,6 +38,6 @@ export interface ProjectReq {
   state: string;
   zip_code: string;
   deposit: string;
-  mockProjectWithApt: Project;
-  homeownerIds: Array<number>;
+  project: Project;
+  homeownerId: Array<number>;
 }
