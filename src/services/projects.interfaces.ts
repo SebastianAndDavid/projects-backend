@@ -38,6 +38,6 @@ export interface ProjectReq {
   state: string;
   zip_code: string;
   deposit: string;
-  project: Project;
-  homeownerId: Array<number>;
+  projectFormData: Project;
+  clientID: Array<number>;
 }
