@@ -1,7 +1,12 @@
 import request from 'supertest';
 import app from '../src/app';
 
-it('#GET gets all phases, milestones, and tasks', async () => {
+it.skip('#GET gets all phases, milestones, and tasks', async () => {
   const res = await request(app).get('/seedPhases');
   expect(res.status).toBe(200);
+});
+it('#GET gets all phases', async () => {
+  const res = await request(app).get('/seedPhases');
+  expect(res.status).toBe(200);
+  expect(res.body.length).toEqual(2);
 });
