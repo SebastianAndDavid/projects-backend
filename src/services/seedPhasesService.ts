@@ -8,7 +8,15 @@ interface PhasesReadOnly {
 
 export default class seedPhasesService {
   static async getAllPhases(): Promise<PhasesReadOnly[]> {
-    const phases = await prisma.phasesReadOnly.findMany();
+    const phases = await prisma.phasesReadOnly.findMany({
+      include: {
+        MilestonesReadOnly: {
+          include: {
+            TasksReadOnly: true,
+          },
+        },
+      },
+    });
     return phases;
   }
 }
