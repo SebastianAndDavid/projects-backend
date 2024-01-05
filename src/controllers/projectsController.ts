@@ -59,8 +59,9 @@ export default Router()
       const { id } = req.params;
 
       if (!id) return res.status(400).json({ error: 'Project ID is required' });
-
-      const data = await ProjectsService.updateProjectById(id, req.body);
+      const { homeowners, ...rest } = req.body;
+      console.log('homeowners', homeowners);
+      const data = await ProjectsService.updateProjectById(id, rest);
 
       if (!data) return res.status(404).json({ error: 'Project not found' });
 

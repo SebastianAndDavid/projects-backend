@@ -150,11 +150,8 @@ export default class ProjectsService {
   static async createProjectWithManyHomeowners(
     req: ProjectReq,
   ): Promise<ProjectWithHomeowners> {
-    console.log('req', req);
-    const project = req.project;
-    console.log('project', project);
-    const id = req.homeownerId;
-    console.log('id', id);
+    const project = req.projectFormData;
+    const id = req.clientID;
     const data = await prisma.projects.create({
       data: {
         ...project,

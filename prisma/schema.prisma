@@ -39,3 +39,25 @@ model Homeowners {
   createdAt DateTime @default(now())
   projects Projects[]
   }
+
+model PhasesReadOnly {
+  id Int @id @default(autoincrement())
+  name String
+  goal String
+  MilestonesReadOnly MilestonesReadOnly[]
+}
+
+model MilestonesReadOnly {
+  id Int @id @default(autoincrement())
+  name String
+  phase PhasesReadOnly @relation(fields: [phaseId], references: [id], onDelete: Cascade)
+  phaseId Int
+  TasksReadOnly TasksReadOnly[]
+}
+
+model TasksReadOnly {
+  id Int @id @default(autoincrement())
+  name String
+  milestone MilestonesReadOnly @relation(fields: [milestoneId], references: [id], onDelete: Cascade)
+  milestoneId Int
+}
