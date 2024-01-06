@@ -12,7 +12,8 @@ export default Router()
   })
   .get('/:id', async (req: Request, res: Response) => {
     try {
-      res.json();
+      const data = await seedPhasesService.getAllTasksByMilestone();
+      res.json(data);
     } catch (error) {
       console.error(error);
     }
