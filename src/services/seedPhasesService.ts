@@ -24,10 +24,10 @@ export default class seedPhasesService {
     });
     return phases;
   }
-  static async getAllTasksByMilestone(): Promise<TasksReadOnly[]> {
+  static async getAllTasksByMilestone(id: string): Promise<TasksReadOnly[]> {
     const phases = await prisma.tasksReadOnly.findMany({
       where: {
-        milestoneId: 1,
+        milestoneId: Number(id),
       },
     });
     return phases;
