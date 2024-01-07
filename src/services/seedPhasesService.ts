@@ -11,6 +11,12 @@ interface TasksReadOnly {
   name?: string;
 }
 
+interface MilestonesReadOnly {
+  id: number;
+  name: string;
+  phaseId: number;
+}
+
 export default class seedPhasesService {
   static async getAllPhases(): Promise<PhasesReadOnly[]> {
     const phases = await prisma.phasesReadOnly.findMany({
@@ -31,5 +37,9 @@ export default class seedPhasesService {
       },
     });
     return phases;
+  }
+  static async getAllMilestones(): Promise<MilestonesReadOnly[]> {
+    const milestones = await prisma.milestonesReadOnly.findMany();
+    return milestones;
   }
 }

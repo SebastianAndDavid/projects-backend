@@ -19,5 +19,5 @@ it.skip('#GET array of all tasks by phase milestone id', async () => {
 it('#GET array of all milestones', async () => {
   const res = await request(app).get('/seedPhases/all/milestones');
   expect(res.status).toBe(200);
-  expect(res.body.length).toBe(2);
+  expect(res.body.length).toBe(6);
 });

@@ -19,9 +19,10 @@ export default Router()
       console.error(error);
     }
   })
-  .get('/milestones', async (req: Request, res: Response) => {
+  .get('/all/milestones', async (req: Request, res: Response) => {
     try {
-      res.json();
+      const data = await seedPhasesService.getAllMilestones();
+      res.json(data);
     } catch (error) {
       console.error(error);
     }
