@@ -18,4 +18,11 @@ export default Router()
     } catch (error) {
       console.error(error);
     }
+  })
+  .get('/milestones', async (req: Request, res: Response) => {
+    try {
+      res.json();
+    } catch (error) {
+      console.error(error);
+    }
   });
