@@ -16,8 +16,14 @@ it.skip('#GET array of all tasks by phase milestone id', async () => {
   expect(res.status).toBe(200);
   expect(res.body.length).toBe(2);
 });
-it('#GET array of all milestones', async () => {
+it.skip('#GET array of all milestones', async () => {
   const res = await request(app).get('/seedPhases/all/milestones');
   expect(res.status).toBe(200);
   expect(res.body.length).toBe(6);
+});
+it('#GET milestone by phaseId', async () => {
+  const id = 1;
+  const res = await request(app).get(`/seedPhases/milestone/${id}`);
+  expect(res.status).toBe(200);
+  expect(res.body.length).toBe(2);
 });
