@@ -42,4 +42,14 @@ export default class seedPhasesService {
     const milestones = await prisma.milestonesReadOnly.findMany();
     return milestones;
   }
+  static async getMilestonesByPhaseId(
+    id: string,
+  ): Promise<MilestonesReadOnly[]> {
+    const milestone = await prisma.milestonesReadOnly.findMany({
+      where: {
+        phaseId: Number(id),
+      },
+    });
+    return milestone;
+  }
 }
