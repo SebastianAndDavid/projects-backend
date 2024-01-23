@@ -10,5 +10,5 @@ const mockPhase = {
 it('#POST creates a new phase without milestones or tasks', async () => {
   const res = await request(app).post('/phases').send(mockPhase);
   expect(res.status).toBe(200);
-  expect(res.body).toEqual(mockPhase);
+  expect(res.body).toEqual({ ...mockPhase, id: expect.any(Number) });
 });
