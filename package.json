@@ -9,6 +9,7 @@
     "test:homeowners": "npm test -- --testMatch='**/homeowners.test.ts'",
     "test:projects": "npm test -- --testMatch='**/projects.test.ts'",
     "test:seedPhases": "npm test -- --testMatch='**/seedPhases.test.ts'",
+    "test:phases": "npm test -- --testMatch='**/phases.test.ts'",
     "seedPhases": "node --require esbuild-register prisma/seedPhases.ts"
   },
   "keywords": [],

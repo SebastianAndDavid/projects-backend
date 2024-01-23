@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import projectsController from './controllers/projectsController';
 import homeownersController from './controllers/homeownersController';
 import seedPhasesController from './controllers/seedPhasesController';
+import phasesController from './controllers/phasesController';
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use(cookieParser());
 app.use('/projects', projectsController);
 app.use('/homeowners', homeownersController);
 app.use('/seedPhases', seedPhasesController);
+app.use('/phases', phasesController);
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
