@@ -6,6 +6,16 @@ import {
   ProjectWithHomeowners,
 } from './projects.interfaces';
 
+async function getAndPostPhase() {
+  const data = await prisma.phasesReadOnly.findMany();
+  // const phase = data.forEach(async (datum) => {
+  //   await prisma.phases.create({ data: { ...datum, projectId: 8 } });
+  // });
+  data.forEach(async (element) => {
+    await prisma.phases.create({ data: { ...element, projectId: 8 } });
+  });
+}
+
 export default class ProjectsService {
   static async createProject({
     name,
@@ -147,11 +157,20 @@ export default class ProjectsService {
   //   return data;
   // }
 
+  // async function getAndPostPhase() {
+  //   const data = await prisma.phasesReadOnly.findMany();
+  //   const phase = data.map(async (datum) => {
+  //     await prisma.phases.create({ data: { ...datum, projectId: 8 } });
+  //   });
+  //   console.log('phase', phase);
+  // }
+
   static async createProjectWithManyHomeowners(
     req: ProjectReq,
   ): Promise<ProjectWithHomeowners> {
     const project = req.projectFormData;
     const id = req.clientID;
+    getAndPostPhase();
     const data = await prisma.projects.create({
       data: {
         ...project,

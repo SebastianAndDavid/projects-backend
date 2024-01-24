@@ -35,11 +35,11 @@ const mockProjectWithApt = {
 //   await truncate(['Projects'], prisma);
 // });
 
-it.skip('#POST connects to server', async () => {
+it('#POST connects to server', async () => {
   const res = await request(app).post('/projects');
   expect(res.status).toBe(200);
 });
-it.skip('#POST should create a new Project', async () => {
+it('#POST should create a new Project', async () => {
   const res = await request(app).post('/projects').send(mockProject);
   expect(res.status).toBe(200);
   expect(res.body).toEqual({
@@ -54,7 +54,7 @@ it.skip('#POST should create a new Project', async () => {
     createdAt: expect.any(String),
   });
 });
-it.skip('#POST should create a new Project with apt', async () => {
+it('#POST should create a new Project with apt', async () => {
   const res = await request(app).post('/projects').send(mockProjectWithApt);
   expect(res.status).toBe(200);
   expect(res.body).toEqual({
@@ -69,7 +69,7 @@ it.skip('#POST should create a new Project with apt', async () => {
     createdAt: expect.any(String),
   });
 });
-it.skip('#POST should create a new Project and f(key) to an existing homeowner', async () => {
+it('#POST should create a new Project and f(key) to an existing homeowner', async () => {
   const id = 32;
   const data = await request(app).get(`/homeowners/${id}`);
   const res = await request(app)
